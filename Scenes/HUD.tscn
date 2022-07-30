@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Resources/Fonts/Kenney Pixel Square.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 5
+outline_color = Color( 1, 0, 0, 1 )
+extra_spacing_space = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 5
+outline_color = Color( 0.219608, 0, 1, 1 )
+extra_spacing_space = 10
+font_data = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="LifeBOX" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = -7.0
+margin_right = 245.0
+margin_bottom = 89.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="LifeTXT" type="Label" parent="LifeBOX"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 252.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 70, 72 )
+custom_fonts/font = SubResource( 1 )
+text = "- LIFE -"
+align = 1
+valign = 1
+
+[node name="LifeCount" type="Label" parent="LifeBOX"]
+margin_left = 5.0
+margin_top = 42.0
+margin_right = 252.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( 70, 72 )
+custom_fonts/font = SubResource( 2 )
+text = "o o o o o"
+align = 1
+valign = 1
+
+[node name="ThrowableBOX" type="ColorRect" parent="."]
+margin_left = 738.0
+margin_top = -7.0
+margin_right = 1031.0
+margin_bottom = 86.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="ThrowableTXT" type="Label" parent="ThrowableBOX"]
+margin_left = 5.0
+margin_top = 9.0
+margin_right = 285.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 70, 72 )
+custom_fonts/font = SubResource( 1 )
+text = "- THROWABLE -"
+align = 1
+valign = 1
+
+[node name="ThrowableCount" type="Label" parent="ThrowableBOX"]
+margin_left = 5.0
+margin_top = 45.0
+margin_right = 285.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 70, 72 )
+custom_fonts/font = SubResource( 3 )
+text = "o o o o o"
+align = 1
+valign = 1
