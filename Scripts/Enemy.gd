@@ -2,6 +2,7 @@ extends Actor
 
 onready var player = get_parent().get_node('Player')
 var IsPlayerHit = false
+export(PackedScene) var killAnimation: PackedScene
 
 func _ready():
 	vel = move_and_slide(vel)
@@ -19,5 +20,5 @@ func _physics_process(delta):
 				IsPlayerHit = true
 				player.health = player.health - 1
 				print("Player got hit! Life: ", player.health)
-			
+			if killAnimation!=null: get_parent().add_child(killAnimation.instance())
 			queue_free()

@@ -9,7 +9,6 @@ var canShoot=true
 var itemPickup: Area2D = null
 onready var offsetParent: Node2D = $offsetRotator
 onready var bulletOffset: Area2D = offsetParent.get_child(0)
-onready var anim: AnimatedSprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -82,13 +81,22 @@ func onHealthChange():
 func moveKeys():
 	if Input.is_action_pressed("mv_up"): 
 		vel=Vector2(0,-1)
+		spr.animation="mv_up"
 	elif Input.is_action_pressed("mv_down"): 
 		vel=Vector2(0,1)
+		spr.animation="mv_down"
 	elif Input.is_action_pressed("mv_left"): 
 		vel=Vector2(-1,0)
-		anim.flip_h=false
+		spr.flip_h=false
+		spr.animation="mv_left"
 	elif Input.is_action_pressed("mv_right"): 
 		vel=Vector2(1,0)
-		anim.flip_h=true
+		spr.flip_h=true
+		spr.animation="mv_left"
 	else:
+		if vel.y<0: spr.animation="idle_up"
+		elif vel.y>0: spr.animation="idle_dw"
+		elif vel.x<0: spr.animation="idle_left"
+		elif vel.x>0: spr.animation="idle_left"
+		#idle
 		vel=Vector2(0,0)
