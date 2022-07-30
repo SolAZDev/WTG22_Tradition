@@ -21,6 +21,8 @@ func _process(delta):
 	
 func onBodyEnter(node: Node2D):
 	shooting=false
+	var par=get_node(pickupParticle)
+	par.emitting=true
 	print(node.name,"!")
 	match node.name:
 		"Player": 
