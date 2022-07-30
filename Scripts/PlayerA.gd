@@ -8,7 +8,8 @@ var IsPlayerDead = false
 var canShoot=true
 var itemPickup: Area2D = null
 onready var offsetParent: Node2D = $offsetRotator
-onready var bulletOffset: Area2D = offsetParent.get_child(0)
+onready var bulletOffset: Area2D = get_node("offsetRotator/ShootOffset")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -65,7 +66,8 @@ func onShootCheckExit(node: Node2D): if shootCast(): canShoot=true
 func shootCast():
 	var res = get_world_2d().direct_space_state.intersect_ray(bulletOffset.global_position, bulletOffset.global_position*Vector2(1,0))
 	#if res: print("Hit a point: ",res.position, res.collider is TileMap)
-	return res.collider is TileMap
+	print("What stopped it? ",res.collider.name)
+	return res.collider is TileMap && res.collider.name.find("TileMap")
 
 func onHealthChange():
 	if health == 0 || health < 0:

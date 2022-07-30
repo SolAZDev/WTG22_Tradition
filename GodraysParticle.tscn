@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://resources/random_selection.png" type="Texture" id=1]
+[ext_resource path="res://Resources/random_selection.png" type="Texture" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=14]
 blend_mode = 1

@@ -24,6 +24,10 @@ config/name="WTJ22_Tradition"
 run/main_scene="res://Scenes/TestScene.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+"use gpu"=false
+
 [input]
 
 mv_up={
@@ -79,4 +83,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/options/use_nvidia_rect_flicker_workaround=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"

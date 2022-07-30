@@ -8,6 +8,7 @@ export(bool) var isEnemy=false
 var shooting:bool = true
 
 export(NodePath) var pickupParticle: NodePath
+export(PackedScene) var hitAnim: PackedScene
 
 onready var trueSpeed=Speed;
 
@@ -20,13 +21,23 @@ func _process(delta):
 		translate(Velocity*trueSpeed)
 	
 func onBodyEnter(node: Node2D):
-	shooting=false
-	var par=get_node(pickupParticle)
-	par.emitting=true
 	print(node.name,"!")
-	match node.name:
-		"Player": 
-			node.itemPickup = self
-			node.health-=1;
+	if shooting:
+		print((node is Actor))
+		if node is Actor:
+			node.updateHealth(-1)
+			#emit hit particle?
+		else:
+			shooting=false
+			if hitAnim != null: 
+				var p =hitAnim.instance()
+				get_parent().add_child(p)
+				p.position = global_position
+			var par=get_node(pickupParticle)
+			par.emitting=true
+	else: 
+		if node.name == "Player": 
+			node.bulletAmmo+=1
+			request_ready()
 
 func _on_Disk_body_entered(node:Node2D): onBodyEnter(node)
