@@ -19,3 +19,6 @@ texture = ExtResource( 1 )
 
 [node name="ShootOffset" type="Position2D" parent="."]
 position = Vector2( 64, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
