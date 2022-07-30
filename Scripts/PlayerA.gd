@@ -1,6 +1,7 @@
 extends Actor
 
-const bulletPath = preload('res://Scenes/Bullet.tscn')
+#const bulletPath = preload('res://Scenes/Bullet.tscn')
+export(PackedScene) var bulletPath 
 var bulletAmmo = 5
 var playerHealth = 5
 var IsPlayerDead = false
@@ -51,10 +52,10 @@ func shoot():
 		var bullet = bulletPath.instance()
 		get_parent().add_child(bullet)
 		bullet.position = bulletOffset.global_position
-		bullet.Velocity = get_global_mouse_position() - position
+		bullet.Velocity = (get_global_mouse_position() - position).normalized()
 
 func _physics_process(delta):
 	vel = Vector2(Input.get_axis("mv_left","mv_right"),Input.get_axis("mv_up","mv_down"));
 	move_and_slide(vel*speed)
-	
+
 
