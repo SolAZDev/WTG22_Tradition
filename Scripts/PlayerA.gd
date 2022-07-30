@@ -3,7 +3,7 @@ extends Actor
 #const bulletPath = preload('res://Scenes/Bullet.tscn')
 export(PackedScene) var bulletPath 
 var bulletAmmo = 5
-var playerHealth = 5
+
 var IsPlayerDead = false
 var itemPickup: Area2D = null
 onready var offsetParent: Node2D = $offsetRotator
@@ -33,15 +33,15 @@ func _process(delta):
 	# 	print('Bullets Increased! Ammo: ' , bulletAmmo)
 	
 	# if Input.is_action_just_pressed("debug_heal"):
-	# 	playerHealth = playerHealth + 1
-	# 	print('Health Increased! Life: ' , playerHealth)
+	# 	health = health + 1
+	# 	print('Health Increased! Life: ' , health)
 	
 	# if Input.is_action_just_pressed("debug_hurt"):
-	# 	playerHealth = playerHealth - 1
-	# 	print('Health Decreased! Life: ' , playerHealth)
+	# 	health = health - 1
+	# 	print('Health Decreased! Life: ' , health)
 	
 	
-	if playerHealth == 0 || playerHealth < 0:
+	if health == 0 || health < 0:
 		IsPlayerDead = true	
 	else:
 		IsPlayerDead = false

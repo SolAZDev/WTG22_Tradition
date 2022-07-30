@@ -9,6 +9,7 @@
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+health = 5
 bulletPath = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
