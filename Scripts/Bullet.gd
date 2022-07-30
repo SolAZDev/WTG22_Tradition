@@ -17,8 +17,10 @@ func _process(delta):
 func _body_entered(node):
 	print(node, "?")
 
-func _on_Disk_body_entered(node:Node2D):
+func onBodyEnter(node: Node2D):
 	print(node.name,"!")
 	shooting=false
-	#play hit animation?
-	
+	match node.name:
+		"Player": node.itemPickup = self
+
+func _on_Disk_body_entered(node:Node2D): onBodyEnter(node)
