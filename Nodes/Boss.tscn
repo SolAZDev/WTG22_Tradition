@@ -1261,21 +1261,21 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=249]
 radius = 20.025
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="MannyOwesUsFood" type="Area2D"]
 script = ExtResource( 3 )
 
 [node name="Phase3" type="AnimatedSprite" parent="."]
 visible = false
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 62 )
-frame = 34
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Phase3"]
 modulate = Color( 1, 0.254902, 0.254902, 1 )
 position = Vector2( 0, -7 )
 frames = SubResource( 186 )
-frame = 57
+frame = 4
 playing = true
 
 [node name="Phase2" type="AnimatedSprite" parent="."]
@@ -1283,14 +1283,13 @@ visible = false
 position = Vector2( 4, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 124 )
-frame = 53
 playing = true
 
 [node name="Phase1" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 z_index = 2
 frames = SubResource( 248 )
-frame = 45
+frame = 15
 playing = true
 
 [node name="Phase4" type="AnimatedSprite" parent="Phase1"]
@@ -1298,8 +1297,15 @@ rotation = 0.785398
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
 frames = SubResource( 248 )
-frame = 44
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 249 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 249 )
+
+[connection signal="body_entered" from="." to="." method="onEnter"]

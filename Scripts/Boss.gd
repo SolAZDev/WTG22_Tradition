@@ -7,6 +7,8 @@ export var RunningSprite: Array = [NodePath(),NodePath(),NodePath()]
 var CurrentHealth:int=1
 var activePhase:int = -1
 
+onready var player = get_tree().get_root().get_node("Player")
+
 func _ready():
 	for i in SpawnObject: SpawnObject[i].get_node(0).set_process(false)
 
@@ -22,3 +24,9 @@ func changePhase():
 func DestroyAll():
 	queue_free()
 
+func onEnter(node:Node2D):
+	if node.name.find("Bullet"):
+		node.queue_free()
+		player.updateAmmo(1)
+		CurrentHealth-=1
+		if CurrentHealth<=0: changePhase()
