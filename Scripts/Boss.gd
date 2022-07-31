@@ -1,17 +1,32 @@
-extends KinematicBody2D
+extends Area2D
 
 export var Healths: Array = [4, 6, 8]
-export var SpawnObject: Array = [PackedScene]
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var SpawnObject: Array = [NodePath(),NodePath(),NodePath()]
+export var RunningSprite: Array = [NodePath(),NodePath(),NodePath()]
 
+var CurrentHealth:int=1
+var activePhase:int = -1
 
-# Called when the node enters the scene tree for the first time.
+onready var player = get_tree().get_root().get_node("Player")
+
 func _ready():
-	pass # Replace with function body.
+	for i in SpawnObject: SpawnObject[i].get_node(0).set_process(false)
 
+func changePhase():
+	if Healths[activePhase+1]==null: DestroyAll()
+	SpawnObject[activePhase].get_node().set_pProcess(false)
+	RunningSprite[activePhase].get_node().set_process(false)
+	activePhase+=1
+	CurrentHealth=Healths[activePhase]
+	SpawnObject[activePhase].get_node().set_process(true)
+	RunningSprite[activePhase].get_node().set_process(true)
+	
+func DestroyAll():
+	queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func onEnter(node:Node2D):
+	if node.name.find("Bullet"):
+		node.queue_free()
+		player.updateAmmo(1)
+		CurrentHealth-=1
+		if CurrentHealth<=0: changePhase()
