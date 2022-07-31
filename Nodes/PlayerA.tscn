@@ -358,7 +358,7 @@ shape = SubResource( 4 )
 modulate = Color( 0.780392, 0.780392, 0.780392, 1 )
 frames = SubResource( 3 )
 animation = "idle_dw"
-frame = 10
+frame = 7
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
