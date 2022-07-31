@@ -51,15 +51,8 @@ func shootCast():
 	return false
 
 func onHealthChange():
-	if health == 0 || health < 0:
-		IsPlayerDead = true	
-	else:
-		IsPlayerDead = false
-	
-	if IsPlayerDead == true:
-		speed = 0
-	else:
-		speed = 200
+	if health == 0 || health < 0: speed=0
+	else: speed=200
 
 func moveKeys():
 	if Input.is_action_pressed("mv_up"): 
