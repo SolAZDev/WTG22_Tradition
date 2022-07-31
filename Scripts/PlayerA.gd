@@ -44,9 +44,11 @@ func onShootCheckEnter(node: Area2D): if shootCast(): canShoot=false
 func onShootCheckExit(node: Node2D): if shootCast(): canShoot=true
 
 func shootCast():
-	var res = get_world_2d().direct_space_state.intersect_ray(bulletOffset.global_position, bulletOffset.global_position*Vector2(1,0))
-	print("What stopped it? ",res.collider.name)
-	return res.collider is TileMap && res.collider.name.find("TileMap")
+	var res:Dictionary = get_world_2d().direct_space_state.intersect_ray(bulletOffset.global_position, bulletOffset.global_position*Vector2(1,0))
+	if !res.empty():
+		#print("What stopped it? ",res.collider.name)
+		return res.collider is TileMap #&& res.collider.name.find("TileMap")
+	return false
 
 func onHealthChange():
 	if health == 0 || health < 0:
