@@ -23,24 +23,6 @@ region = Rect2( 0, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 atlas = ExtResource( 6 )
 region = Rect2( 32, 0, 32, 64 )
 
@@ -376,7 +358,6 @@ shape = SubResource( 4 )
 modulate = Color( 0.780392, 0.780392, 0.780392, 1 )
 frames = SubResource( 3 )
 animation = "idle_dw"
-frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -387,16 +368,15 @@ smoothing_enabled = true
 rotation = 1.5708
 
 [node name="ShootOffset" type="Area2D" parent="offsetRotator"]
-position = Vector2( 48, 0 )
+position = Vector2( 64, 0 )
 
 [node name="ShootCheck" type="CollisionShape2D" parent="offsetRotator/ShootOffset"]
-position = Vector2( 16, 0 )
 shape = SubResource( 2 )
 
 [node name="AimArrow" type="Sprite" parent="offsetRotator/ShootOffset"]
 position = Vector2( 64, 0 )
 rotation = 1.5708
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.1, 0.25 )
 z_index = 100
 texture = ExtResource( 4 )
 

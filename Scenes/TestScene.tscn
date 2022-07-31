@@ -22,6 +22,8 @@ radius = 53.0848
 
 [node name="Node2D" type="Node2D"]
 
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1035, 135 )
 

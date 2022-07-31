@@ -37,7 +37,7 @@ func onBodyEnter(node: Node2D):
 			par.emitting=true
 	else: 
 		if node.name == "Player": 
-			node.bulletAmmo+=1
-			request_ready()
+			node.updateAmmo(1)
+			queue_free()
 
 func _on_Disk_body_entered(node:Node2D): onBodyEnter(node)

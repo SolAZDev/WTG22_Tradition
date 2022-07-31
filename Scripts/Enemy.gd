@@ -16,6 +16,6 @@ func _physics_process(delta):
 		if collision.collider == player:
 			if IsPlayerHit == false:
 				IsPlayerHit = true
-				player.health = player.health - 1
+				player.updateHealth(-1)
 				print("Player got hit! Life: ", player.health)
 				if killOnTouch: updateHealth(-10000)
