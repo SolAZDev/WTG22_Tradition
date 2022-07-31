@@ -11,7 +11,9 @@ export(NodePath) var pickupParticle: NodePath
 export(PackedScene) var hitAnim: PackedScene
 
 onready var trueSpeed=Speed;
-
+func _ready():
+	pass
+	
 func _process(delta):
 	if shooting:
 		trueSpeed+=SpeedOverTime
@@ -24,17 +26,17 @@ func onBodyEnter(node: Node2D):
 	print(node.name,"!")
 	if shooting:
 		print((node is Actor))
+		if hitAnim != null: 
+			var p =hitAnim.instance()
+			get_parent().add_child(p)
+			p.position = global_position
 		if node is Actor:
 			node.updateHealth(-1)
-			#emit hit particle?
-		else:
-			shooting=false
-			if hitAnim != null: 
-				var p =hitAnim.instance()
-				get_parent().add_child(p)
-				p.position = global_position
+		shooting=false
+		if !isEnemy:
 			var par=get_node(pickupParticle)
 			par.emitting=true
+		else: queue_free()
 	else: 
 		if node.name == "Player": 
 			node.updateAmmo(1)

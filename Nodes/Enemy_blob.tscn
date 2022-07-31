@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/EnemyParticle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Sprites/slime-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Nodes/Anim_Death.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 25 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 160, 0, 32, 25 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 32, 25 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 6.5 )
+
+[node name="Slime" type="KinematicBody2D"]
+scale = Vector2( 5, 5 )
+script = ExtResource( 1 )
+health = 2
+speed = 25
+killAnim = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.839216, 0.396078, 0.396078, 1 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 5 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0, 0, 1 )
