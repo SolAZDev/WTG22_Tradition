@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PROJECTOLE_HIT_SOLID.wav-99451e0e282ef50f21435b64c496159e.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/SFX/PROJECTOLE_HIT_SOLID.wav"
+dest_files=[ "res://.import/PROJECTOLE_HIT_SOLID.wav-99451e0e282ef50f21435b64c496159e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

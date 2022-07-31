@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PROJECTOLE_TROW_V2.wav-a544f1d821a33ca4bcde814cfd8f8063.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/SFX/PROJECTOLE_TROW_V2.wav"
+dest_files=[ "res://.import/PROJECTOLE_TROW_V2.wav-a544f1d821a33ca4bcde814cfd8f8063.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
