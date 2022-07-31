@@ -24,9 +24,16 @@ config/name="WTJ22_Tradition"
 run/main_scene="res://Scenes/TestScene.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [global]
 
 "use gpu"=false
+viewpoer=false
+viewport=false
 
 [input]
 
