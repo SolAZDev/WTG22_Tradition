@@ -9,6 +9,8 @@ var shooting:bool = true
 
 export(NodePath) var pickupParticle: NodePath
 export(PackedScene) var hitAnim: PackedScene
+export(AudioStream) var hitEnemy
+export(AudioStream) var hitSolid
 
 onready var trueSpeed=Speed;
 func _ready():
@@ -32,6 +34,8 @@ func onBodyEnter(node: Node2D):
 			p.position = global_position
 		if node is Actor:
 			node.updateHealth(-1)
+			if hitEnemy != null: AudioManager.playSound(hitEnemy)
+		else: if hitSolid != null: AudioManager.playSound(hitSolid)
 		shooting=false
 		if !isEnemy:
 			var par=get_node(pickupParticle)

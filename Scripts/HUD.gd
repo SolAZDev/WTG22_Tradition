@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+
+
 onready var life: Label = $LifeBOX/LifeCount
 onready var throwable: Label = $ThrowableBOX/ThrowableCount
 

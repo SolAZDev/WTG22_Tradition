@@ -20,6 +20,7 @@ func _physics_process(delta):
 			if IsPlayerHit == false:
 				IsPlayerHit = true
 				player.updateHealth(-1)
+				if player.hurt!=null: AudioManager.playSound(player.hurt)
 				print("Player got hit! Life: ", player.health)
 				if killOnTouch: updateHealth(-10000)
 		else: IsPlayerHit=false

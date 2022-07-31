@@ -2,6 +2,10 @@ extends Actor
 
 #const bulletPath = preload('res://Scenes/Bullet.tscn')
 export(PackedScene) var bulletPath 
+export(AudioStream) var itemGet
+export(AudioStream) var throw
+export(AudioStream) var hurt
+
 var bulletAmmo = 5
 
 var IsPlayerDead = false
@@ -31,6 +35,7 @@ func shoot():
 	get_parent().add_child(bullet)
 	bullet.position = bulletOffset.global_position
 	bullet.Velocity = Vector2(1,0).rotated(offsetParent.rotation)
+	if throw!=null: AudioManager.playSound(throw)
 
 func _physics_process(delta):
 	moveKeys()
@@ -80,3 +85,4 @@ func moveKeys():
 func updateAmmo(num):
 	bulletAmmo+=num			
 	hud.BulletCount(bulletAmmo)
+	if itemGet!=null: AudioManager.playSound(itemGet)

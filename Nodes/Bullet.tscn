@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/PNG (Transparent)/circle_03.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=2]
 [ext_resource path="res://Nodes/SparkleParticle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/HitAnim.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Audio/SFX/PROJECTOLE_HIT_ENEMY.wav" type="AudioStream" id=5]
+[ext_resource path="res://Resources/Audio/SFX/PROJECTOLE_HIT_SOLID.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -16,6 +18,8 @@ Speed = 8.0
 SpeedOverTime = -0.05
 pickupParticle = NodePath("Particles2D2")
 hitAnim = ExtResource( 4 )
+hitEnemy = ExtResource( 5 )
+hitSolid = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )

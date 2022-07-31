@@ -10,15 +10,17 @@ var activePhase:int = -1
 onready var player = get_tree().get_root().get_node("Player")
 
 func _ready():
-	for i in SpawnObject: SpawnObject[i].get_node(0).set_process(false)
+	if(SpawnObject.size()>0):
+		for i in SpawnObject: 
+			SpawnObject[i].get_node().canRun=false
 
 func changePhase():
 	if Healths[activePhase+1]==null: DestroyAll()
-	SpawnObject[activePhase].get_node().set_pProcess(false)
-	RunningSprite[activePhase].get_node().set_process(false)
+	SpawnObject[activePhase].get_node().canRun=false
+	RunningSprite[activePhase].get_node().queue_free()
 	activePhase+=1
 	CurrentHealth=Healths[activePhase]
-	SpawnObject[activePhase].get_node().set_process(true)
+	SpawnObject[activePhase].get_node().canRun=true
 	RunningSprite[activePhase].get_node().set_process(true)
 	
 func DestroyAll():

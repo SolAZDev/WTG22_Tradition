@@ -3,10 +3,12 @@ extends Area2D
 export var Enemies: Array = Array()
 onready var timer: Timer = $Timer
 export(int) var waitTime=4
+export(bool) var canRun=true
+
 
 func onEnter(body): _on_Area2D_body_entered(body)
 func _on_Area2D_body_entered(body):
-	if body.name == 'Player':
+	if body.name == 'Player' && canRun:
 		print('Player Detected!')
 		timer.start(waitTime)
 

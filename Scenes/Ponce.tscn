@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Nodes/PlayerA.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/KennyTopdown.tres" type="TileSet" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Nodes/SpawnZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/Boss.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Resources/PNG (Transparent)/light_01.png" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -81,35 +80,74 @@ position = Vector2( 2682, -1133 )
 Enemies = [ ExtResource( 7 ), ExtResource( 4 ) ]
 waitTime = 6
 
-[node name="SpawnZone2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 637, -3206 )
-scale = Vector2( 1.6, 1.7 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 1.0
 autoplay = true
 
+[node name="Enemy8" parent="." instance=ExtResource( 7 )]
+position = Vector2( -7, -1864 )
+
+[node name="Enemy9" parent="." instance=ExtResource( 7 )]
+position = Vector2( -1386, -2473 )
+
+[node name="Enemy10" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2804, -1902 )
+
+[node name="Slime6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1843, -1873 )
+
 [node name="Enemy7" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1074, -1211 )
 
-[node name="Enemy" parent="Enemy7" instance=ExtResource( 7 )]
-position = Vector2( -1081, -653 )
+[node name="Boss" parent="." instance=ExtResource( 8 )]
+position = Vector2( 609, -3272 )
+SpawnObject = [ NodePath("../SpawnZone2") ]
 
-[node name="Enemy2" parent="Enemy7" instance=ExtResource( 7 )]
-position = Vector2( -2460, -1262 )
+[node name="SpawnZone2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 637, -3206 )
+scale = Vector2( 1.6, 1.7 )
+Enemies = [ ExtResource( 4 ) ]
 
-[node name="Enemy3" parent="Enemy7" instance=ExtResource( 7 )]
-position = Vector2( -3878, -691 )
+[node name="Enemy" parent="SpawnZone2" instance=ExtResource( 7 )]
+position = Vector2( 720, 317.647 )
 
-[node name="Slime" parent="Enemy7" instance=ExtResource( 4 )]
-position = Vector2( -2917, -662 )
+[node name="Enemy2" parent="SpawnZone2" instance=ExtResource( 7 )]
+position = Vector2( -801.25, -239.412 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 8 )]
-position = Vector2( 636, -3230 )
-scale = Vector2( 5, 5 )
+[node name="Enemy3" parent="SpawnZone2" instance=ExtResource( 7 )]
+position = Vector2( -774.375, 309.412 )
+scale = Vector2( 1, 1 )
 
-[node name="Light2D" type="Light2D" parent="KinematicBody2D"]
-position = Vector2( -2.30003, 5.80003 )
-scale = Vector2( 1.06836, 0.584375 )
-texture = ExtResource( 9 )
+[node name="Enemy4" parent="SpawnZone2" instance=ExtResource( 7 )]
+position = Vector2( 773.75, -263.529 )
+
+[node name="SpawnZone3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 637, -3206 )
+scale = Vector2( 1.6, 1.7 )
+Enemies = [ ExtResource( 7 ) ]
+waitTime = 3
+canRun = false
+
+[node name="Slime7" parent="SpawnZone3" instance=ExtResource( 4 )]
+position = Vector2( -275, -17.647 )
+scale = Vector2( 3.125, 2.94118 )
+
+[node name="Slime8" parent="SpawnZone3" instance=ExtResource( 4 )]
+position = Vector2( 298.125, -8.82373 )
+scale = Vector2( 3.125, 2.94118 )
+
+[node name="Slime9" parent="SpawnZone3" instance=ExtResource( 4 )]
+position = Vector2( -4.37501, 216.47 )
+scale = Vector2( 3.125, 2.94118 )
+
+[node name="Slime10" parent="SpawnZone3" instance=ExtResource( 4 )]
+position = Vector2( -26.25, -245.882 )
+scale = Vector2( 3.125, 2.94118 )
+
+[node name="SpawnZone4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 637, -3206 )
+scale = Vector2( 1.6, 1.7 )
+Enemies = [ ExtResource( 7 ), ExtResource( 4 ) ]
+waitTime = 3
+canRun = false

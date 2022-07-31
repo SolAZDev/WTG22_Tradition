@@ -24,6 +24,11 @@ config/name="WTJ22_Tradition"
 run/main_scene="res://Scenes/Ponce.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+AudioManager="*res://Scripts/AudioManager.gd"
+BGMManger="*res://Scripts/AudioManager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
