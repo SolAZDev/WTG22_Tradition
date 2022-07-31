@@ -1265,16 +1265,17 @@ radius = 20.025
 script = ExtResource( 3 )
 
 [node name="Phase3" type="AnimatedSprite" parent="."]
+visible = false
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 62 )
-frame = 5
+frame = 34
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Phase3"]
 modulate = Color( 1, 0.254902, 0.254902, 1 )
 position = Vector2( 0, -7 )
 frames = SubResource( 186 )
-frame = 19
+frame = 57
 playing = true
 
 [node name="Phase2" type="AnimatedSprite" parent="."]
@@ -1282,14 +1283,14 @@ visible = false
 position = Vector2( 4, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 124 )
-frame = 16
+frame = 53
 playing = true
 
 [node name="Phase1" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 z_index = 2
 frames = SubResource( 248 )
-frame = 15
+frame = 45
 playing = true
 
 [node name="Phase4" type="AnimatedSprite" parent="Phase1"]
@@ -1297,7 +1298,7 @@ rotation = 0.785398
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
 frames = SubResource( 248 )
-frame = 14
+frame = 44
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
