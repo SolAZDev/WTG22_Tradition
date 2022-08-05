@@ -1,4 +1,4 @@
-[gd_scene load_steps=256 format=2]
+[gd_scene load_steps=257 format=2]
 
 [ext_resource path="res://Resources/AnimationSprites/16_sunburn_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Resources/AnimationSprites/13_vortex_spritesheet.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Resources/AnimationSprites/18_midnight_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Resources/AnimationSprites/14_phantom_spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Resources/PNG (Transparent)/light_01.png" type="Texture" id=6]
+[ext_resource path="res://Nodes/EnemyParticle.tscn" type="PackedScene" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -1260,9 +1261,9 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=249]
-radius = 20.025
+radius = 26.3712
 
-[node name="Boss" type="Area2D"]
+[node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 5, 5 )
 script = ExtResource( 3 )
 RunningSprite = [ NodePath("Phase1"), NodePath("Phase2"), NodePath("Phase3") ]
@@ -1271,29 +1272,44 @@ RunningSprite = [ NodePath("Phase1"), NodePath("Phase2"), NodePath("Phase3") ]
 visible = false
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 62 )
-frame = 37
+frame = 33
 playing = true
+
+[node name="Particles2D" parent="Phase3" instance=ExtResource( 7 )]
+modulate = Color( 1, 0, 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Phase3"]
 modulate = Color( 1, 0.254902, 0.254902, 1 )
 position = Vector2( 0, -7 )
 frames = SubResource( 186 )
-frame = 27
+frame = 9
 playing = true
+
+[node name="Light2D" type="Light2D" parent="Phase3"]
+position = Vector2( -1.53335, 3.86669 )
+scale = Vector2( 0.71224, 0.389583 )
+texture = ExtResource( 6 )
+color = Color( 1, 0, 0, 1 )
 
 [node name="Phase2" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 4, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 124 )
-frame = 24
+frame = 6
 playing = true
+
+[node name="Light2D" type="Light2D" parent="Phase2"]
+position = Vector2( -1.53335, 3.86669 )
+scale = Vector2( 0.71224, 0.389583 )
+texture = ExtResource( 6 )
+color = Color( 1, 0.670588, 0.439216, 1 )
 
 [node name="Phase1" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 z_index = 2
 frames = SubResource( 248 )
-frame = 47
+frame = 43
 playing = true
 
 [node name="Phase4" type="AnimatedSprite" parent="Phase1"]
@@ -1301,18 +1317,13 @@ rotation = 0.785398
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
 frames = SubResource( 248 )
-frame = 46
+frame = 42
 playing = true
+
+[node name="Light2D" type="Light2D" parent="Phase1"]
+position = Vector2( -1.53335, 3.86669 )
+scale = Vector2( 0.71224, 0.389583 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 249 )
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-shape = SubResource( 249 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -2.30003, 5.80003 )
-scale = Vector2( 1.06836, 0.584375 )
-texture = ExtResource( 6 )

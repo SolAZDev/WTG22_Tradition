@@ -25,13 +25,15 @@ func _process(delta):
 		translate(Velocity*trueSpeed)
 	
 func onBodyEnter(node: Node2D):
-	print(node.name,"!")
+	#print(node.name,"!")
 	if shooting:
-		print((node is Actor))
 		if hitAnim != null: 
 			var p =hitAnim.instance()
 			get_parent().add_child(p)
 			p.position = global_position
+		if node is Boss:
+			node.Hurt(self)
+			if hitEnemy != null: AudioManager.playSound(hitEnemy)
 		if node is Actor:
 			node.updateHealth(-1)
 			if hitEnemy != null: AudioManager.playSound(hitEnemy)

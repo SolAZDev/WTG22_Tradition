@@ -1,3 +1,4 @@
+class_name SpawnRadius
 extends Area2D
 
 export var Enemies: Array = Array()
@@ -5,21 +6,20 @@ onready var timer: Timer = $Timer
 export(int) var waitTime=4
 export(bool) var canRun=true
 
+func stopTimer(): timer.stop()
+func startTimer(): timer.start(waitTime)
 
-func onEnter(body): _on_Area2D_body_entered(body)
-func _on_Area2D_body_entered(body):
-	if body.name == 'Player' && canRun:
+func onEnter(body):
+	if body is Player && canRun:
 		print('Player Detected!')
 		timer.start(waitTime)
 
-func onExit(body): _on_Area2D_body_exited(body)
-func _on_Area2D_body_exited(body):
-	if body.name == 'Player':
+func onExit(body): 
+	if body is Player:
 		print('Player Left!')
 		timer.stop()
 
-func _on_Timer_timeout(): _on_SpawnTimer_timeout()
-func _on_SpawnTimer_timeout():
+func _on_Timer_timeout():
 	print('Timeout!')
 	var random = RandomNumberGenerator.new()
 	random.randomize()	

@@ -1,3 +1,4 @@
+class_name Player
 extends Actor
 
 #const bulletPath = preload('res://Scenes/Bullet.tscn')
@@ -13,18 +14,18 @@ var canShoot:bool=true
 var canDash:bool=true
 var itemPickup: Area2D = null
 onready var offsetParent: Node2D = $offsetRotator
-onready var bulletOffset: Area2D = get_node("offsetRotator/ShootOffset")
+onready var bulletOffset: Node2D = get_node("offsetRotator/ShootOffset")
+onready var ShootCaster: RayCast2D = get_node("offsetRotator/RayCast2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	
+	pass
+		
 func _process(delta):
 	offsetParent.look_at(global_position+vel)
-	if Input.is_action_just_pressed("attack") && canShoot:
+	if Input.is_action_just_pressed("attack") && shootCastAlt():
 		if bulletAmmo > 0:
 			updateAmmo(-1)
-			print('SHOOTING! Ammo: ' , bulletAmmo)
 			shoot()
 	#if Input.is_action_just_pressed("dodge") && canDash:
 		#speed*=2
@@ -42,19 +43,19 @@ func _physics_process(delta):
 	move_and_slide(vel*speed)
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
-		#print(get_slide_count(), col.collider.name)
-
-
-func onShootCheckEnter(node: Area2D): if shootCast(): canShoot=false
-func onShootCheckExit(node: Node2D): if shootCast(): canShoot=true
 
 func shootCast():
 	var res:Dictionary = get_world_2d().direct_space_state.intersect_ray(bulletOffset.global_position, bulletOffset.global_position*Vector2(1,0))
 	if !res.empty():
-		#print("What stopped it? ",res.collider.name)
-		return res.collider is TileMap #&& res.collider.name.find("TileMap")
+		return res.collider is TileMap 
 	return false
-
+	
+func shootCastAlt():
+	if ShootCaster.is_colliding(): 
+		print(ShootCaster.get_collider().get_class())
+		if ShootCaster.get_collider() is TileMap: return false
+	return true
+	
 func onHealthChange():
 	if health == 0 || health < 0: speed=0
 	else: speed=200
